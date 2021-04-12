@@ -1,0 +1,41 @@
+﻿@model UpdateUserRoleVm
+
+@{ 
+// razor code here if yo need that
+}
+
+<div>
+    <form asp-controller="Roles" asp-action="UpdateUserRole" method="post">
+        <h2>Add User to Role</h2>
+        <div>
+            @foreach (var user in @Model.Users)
+            {
+            <div>
+                <input type="radio" asp-for="@Model.UserEmail" value="@user.Email" />
+                @user.Email
+            </div>
+                <div>                    
+                        @foreach (var role in user.Roles)
+                        {
+                           <div>
+                              @role.Name
+                           </div>
+                        }                   
+                </div> 
+            }
+        </div>
+        <h4>Roles to add</h4>
+        <div>
+            @foreach (var role in @Model.Roles)
+              {
+                <div>
+                    <input type="radio" asp-for="Role" value="@role" />
+                    @role
+                </div>          
+              }
+        </div>
+        <input type="submit" value="Add Role" />
+        <input type="hidden" asp-for="Delete" value="false" id="delete" />
+        <input type="submit" value="Delete Role" onclick="document.getElementById('delete').value = 'true'" />
+    </form>
+</div>
