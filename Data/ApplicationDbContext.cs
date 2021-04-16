@@ -16,5 +16,8 @@ namespace Roles.Data
 
         public DbSet<Email> Emails { get; set; }
 
+        public DbSet<Project> Project { get; set; }
+
+        public DbSet<Task> Task { get; set; }
     }
 }

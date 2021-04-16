@@ -1,0 +1,62 @@
+﻿@using TaskStatus = Roles.Models.TaskStatus
+@model TaskReadVM
+
+<div class="row m-2">
+    <div class="card container-fluid  @("task" + @Model.Task.Status)">
+        <div class="card-body p-2">
+            <div class="d-flex justify-content-center">
+                <small class="mx-1 pt-1">@Model.Task.Id</small>
+                <h5 class="card-title mx-1">@Model.Task.Summary</h5>
+            </div>
+            <div class="d-flex justify-content-between">
+                @if (Model.Task.Status !=  TaskStatus.Ready)
+                {
+    <div class="align-self-center">
+        <form asp-action="MoveTaskBack" method="post">
+            <input name="id" type="hidden" value="@Model.Task.Id" />
+            <button class="link-button">
+                <i class="material-icons align-self-center cursor-pointer text-dark">back</i>
+                 
+            </button>
+        </form>
+    </div> }
+                else
+                {
+                    <i class="material-icons align-self-center text-muted">back</i>
+                }
+
+                <p class="card-text">@Model.Task.Description</p>
+                @if (Model.Task.Status != TaskStatus.Done)
+                {
+    <div class="align-self-center">
+        <form asp-action="AdvanceTask" method="post">
+            <input name="id" type="hidden" value="@Model.Task.Id" />
+            <button class="link-button">
+                <i class="material-icons align-self-center cursor-pointer text-dark">></i>
+            </button>
+        </form>
+    </div> }
+                else
+                {
+    <i class="material-icons align-self-center text-muted">></i>}
+            </div>
+            <div class="card-body p-2 d-flex justify-content-center">
+                <div class="mx-1">@Model.Assignee</div>
+                <div class="mx-1">
+                    <span class="badge badge-pill badge-secondary">@Model.Task.StoryPoints</span>
+                </div>
+                <div class="mx-1 rounded bg-danger cursor-pointer">
+                    @{ var routeData = new Dictionary<string, string> { { "returnUrl", @Context.Request.Path } }; }
+                    <a asp-controller="Tasks" asp-action="Delete" asp-all-route-data="routeData" asp-route-id="@Model.Task.Id">
+                        <i class="material-icons p-1 text-white">delete_forever</i>
+                    </a>
+                </div>
+                <div class="mx-1 rounded bg-success cursor-pointer">
+                    <a asp-controller="Tasks" asp-action="Edit" asp-all-route-data="routeData" asp-route-id="@Model.Task.Id">
+                        <i class="material-icons p-1 text-white">edit</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

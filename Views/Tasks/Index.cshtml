@@ -1,0 +1,70 @@
+﻿@model TaskListVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Summary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.Assignee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Task.StoryPoints)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@for (var i =0; i < Model.Tasks.Count; i++)
+{
+    var item = Model.Tasks[i];
+    var task = item.Task;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.Summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.Assignee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.StoryPoints)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@task.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@task.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@task.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using  Roles.Hubs;
 
 namespace Roles
 {
@@ -34,6 +35,10 @@ namespace Roles
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // SignalR chat..... maybe signalRcore()
+
+            services.AddSignalR();
 
             // Register user and role services
             services.AddDefaultIdentity<IdentityUser>()
@@ -84,6 +89,9 @@ namespace Roles
 
             app.UseEndpoints(endpoints =>
             {
+                // defining end point
+                endpoints.MapHub<ChatHub>("/chatHub");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
