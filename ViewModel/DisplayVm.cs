@@ -9,5 +9,7 @@ namespace Roles.ViewModel
     {
         public IEnumerable<string> Roles { get; set; }
         public IEnumerable<UsersVm> Users { get; set; }
+
+ 
     }
 }

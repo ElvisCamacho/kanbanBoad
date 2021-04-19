@@ -4,38 +4,55 @@
 // razor code here if yo need that
 }
 
-<div>
+<div  >
+    <hr />
+    
+    <div class="text-center">
+        <h2 >Adding Role to a User</h2>
+        <span>Chose the role and the user respectively and click add role</span>
+    </div>
+    <hr />
     <form asp-controller="Roles" asp-action="UpdateUserRole" method="post">
-        <h2>Add User to Role</h2>
-        <div>
-            @foreach (var user in @Model.Users)
-            {
+        
+        <div class="d-flex p-2 justify-content-center">
+            <br />
             <div>
-                <input type="radio" asp-for="@Model.UserEmail" value="@user.Email" />
-                @user.Email
-            </div>
-                <div>                    
-                        @foreach (var role in user.Roles)
-                        {
-                           <div>
-                              @role.Name
-                           </div>
-                        }                   
-                </div> 
-            }
-        </div>
-        <h4>Roles to add</h4>
+                <h4>Roles</h4>
+                @foreach (var role in @Model.Roles)
+                {
         <div>
-            @foreach (var role in @Model.Roles)
-              {
+            <input type="radio" asp-for="Role" value="@role" />
+            @role
+        </div>}
+            </div>
+            @*<input class="btn btn-outline-primary" type="submit" value="Add Role"/>
+        <input type="hidden" asp-for="Delete" value="false" id="delete"/>
+        <input class="btn btn-outline-danger" type="submit" value="Delete Role" onclick="document.getElementById('delete').value = 'true'"/>*@
+            <div style="padding-left: 350px">
+                 
+                <h4>Users</h4>
                 <div>
-                    <input type="radio" asp-for="Role" value="@role" />
-                    @role
-                </div>          
-              }
+                    @foreach (var user in @Model.Users)
+                    {
+        <div>
+            <input type="radio" asp-for="@Model.UserEmail" value="@user.Email" />
+            @user.Email
         </div>
-        <input type="submit" value="Add Role" />
-        <input type="hidden" asp-for="Delete" value="false" id="delete" />
-        <input type="submit" value="Delete Role" onclick="document.getElementById('delete').value = 'true'" />
+                        <div>
+                            @foreach (var role in user.Roles)
+                            {
+            <h5>
+                @role.Name
+            </h5>}
+                        </div>}
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align:center;" class="m-5">
+            <input class="btn btn-outline-success" type="submit" value="Add Role" />
+            <input type="hidden" asp-for="Delete" value="false" id="delete" />
+            <input class="btn btn-outline-danger" type="submit" value="Delete Role" onclick="document.getElementById('delete').value = 'true'" />
+        </div>
     </form>
 </div>

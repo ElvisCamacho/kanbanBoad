@@ -4,8 +4,13 @@
 
 <div>
     <form asp-controller="Roles" asp-action="CreateRole" method="post">
-        <label>Create new Role</label>
-        <input asp-for="@Model.Name" />
-        <input type="submit" value="Create" />
+        @*<input class="" asp-for="@Model.Name"/>
+        <input class="btn btn-primary" type="submit" value="Create"/>*@
+        
+        <div class="input-group input-group-lg">
+            <legend>Create new Role</legend>
+            <input asp-for="@Model.Name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            @*<span class="input-group-text" id="inputGroup-sizing-lg">Create</span>*@
+            <input class="btn btn-primary" type="submit" value="Create Roles"/>        </div>
     </form>
 </div>

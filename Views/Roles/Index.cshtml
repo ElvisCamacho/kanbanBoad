@@ -1,31 +1,55 @@
 ﻿@model DisplayVm
 
 @{ }
-
 <div>
-    <h2>Create User</h2>
+    <br/>
+    <h2> Administrator Page</h2>
+    <br/>
     <div>
         <form asp-controller="Roles" asp-action="CreateUser" method="post">
-            <label>User Email</label>
-            <input name="email" value="" />
-            <input type="submit" value="Create User" />
+            <div class="input-group input-group-lg">
+                <legend>Create new Users</legend>
+
+                <input name="email" value="" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Enter an Email"/>
+                @*<input type="submit" value="Create User"/>*@
+                <input class="btn btn-primary" type="submit" value="Create Users"/>
+            </div>
         </form>
     </div>
 </div>
+<br/>
 <div>
+    <h2>Users List: <small>@Model.Users.Count() users</small></h2>
+    <ul>
+        @foreach (var users in @Model.Users)
+        {
+            <li>
+                @users.Email 
+            </li>
+        }
+    </ul>
+</div>
+
+<hr/>
+ 
+<div>
+    <partial name="_CreateRolePartial" model=" new RoleVm()" />
+    <br/>
+
     <div>
-        <h2>Role List</h2>
+        <h2>Roles List</h2>
         <ul>
             @foreach (var role in Model.Roles)
             {
                 <li>
                     @role
-                </li>       
+                </li>
             }
         </ul>
     </div>
-    <partial name="_CreateRolePartial" model=" new RoleVm()" />
 </div>
-<div>
-    <partial name="_AddUserToRolePartial" model="new UpdateUserRoleVm() { Users =@Model.Users, Roles = @Model.Roles}" />
-</div>
+
+    <div>
+        <partial name="_AddUserToRolePartial" model="new UpdateUserRoleVm() { Users =@Model.Users, Roles = @Model.Roles}" />
+    </div>
+ 

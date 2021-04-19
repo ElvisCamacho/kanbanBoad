@@ -229,7 +229,7 @@ namespace Roles.Controllers
                 {
                     assignee = assignee.Substring(0, 5);
                 }
-                assignee = assignee + "**";
+                assignee = assignee + "*";
             }
             return assignee;
         }

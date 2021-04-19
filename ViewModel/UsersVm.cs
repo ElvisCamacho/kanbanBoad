@@ -10,5 +10,6 @@ namespace Roles.ViewModel
     {
         public string Email { get; set; }
         public IEnumerable<UserRole> Roles { get; set; }
+
     }
 }
