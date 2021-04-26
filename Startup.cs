@@ -34,10 +34,9 @@ namespace Roles
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            //   .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // SignalR chat..... maybe signalRcore()
-
+            // SignalR chat..... 
             services.AddSignalR();
 
             // Register user and role services
@@ -62,6 +61,22 @@ namespace Roles
                                 || context.User.IsInRole("User")));
             });
 
+            // maybe not needed
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Identity/Account/login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+
+
+            services.AddAuthentication().AddFacebook(options =>
+            {
+                options.AppId = "790201934961629";
+                options.AppSecret = "9855903a98dd0c17a1aac9825e7e93e2";
+                options.AccessDeniedPath = "/AccessDeniedPathInfo";
+            });
+            
             services.AddControllersWithViews();
         }
 

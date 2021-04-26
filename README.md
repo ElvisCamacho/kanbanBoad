@@ -7,9 +7,6 @@
 Technical Requirements:
 
 User Role Security:
-
-
-
 #Authentication:
 a) External Authentication Factor via Facebook
 b) Two factor Authentication via SMS service
@@ -20,7 +17,7 @@ b) Two factor Authentication via SMS service
 In this Part, you can implement User Role Security
 a) Create Admin
 b) Admin can create new roles
-c) User could be able to register yourself with their username and roles
+c) User could be able to register yourself with their username and roles (not implemented)
 
 
 #Entity Framework: 

@@ -8,26 +8,25 @@
     <p class="display-4">@Model.Project.Name</p>
 
     @{ var routeData = new Dictionary<string, string> { { "projectId", @Model.Project.Id.ToString() } }; }
-    <a asp-controller="Tasks" asp-action="Create" asp-all-route-data="routeData" class ="btn btn-primary">Create New Task</a>
-
-    @*<a asp-controller="Tasks" asp-action="Create" class ="btn btn-primary">Create New Task</a>*@
-
+    <a asp-controller="Tasks" asp-action="Create" asp-all-route-data="routeData" class="btn btn-primary">Create New Task</a>
 
     <div class="container-fluid ">
         <div class="row">
-             
+
             @foreach (var taskGroup in @Model.Tasks)
             {
                 <div class="col px-0">
-                    @taskGroup.Status
+                    @*@taskGroup.Status*@
+
                     @foreach (var task in @taskGroup.Tasks)
                     {
-                        <partial name="_Task" for=@task />
+                        @taskGroup.Status
+
+                        <partial name="_Task" for=@task/>
+
                     }
                 </div>
             }
-
-
         </div>
     </div>
 

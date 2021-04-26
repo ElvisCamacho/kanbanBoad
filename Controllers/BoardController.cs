@@ -11,7 +11,7 @@ using Roles.ViewModel;
 
 namespace Roles.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class BoardController : Controller
     {
         public readonly ApplicationDbContext _context;

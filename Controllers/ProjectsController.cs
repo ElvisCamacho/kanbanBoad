@@ -11,7 +11,7 @@ using Roles.Models;
 
 namespace Roles.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ProjectsController : Controller
     {
         private readonly ApplicationDbContext _context;

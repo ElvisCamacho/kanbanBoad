@@ -13,7 +13,7 @@ using Roles.ViewModel;
 
 namespace Roles.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class TasksController : Controller
     {
         private readonly ApplicationDbContext _context;

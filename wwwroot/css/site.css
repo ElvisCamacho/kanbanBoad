@@ -54,13 +54,16 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+  
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    width: 100%;
+    margin-bottom: 60px;
+   
 }
 .footer {
   position: absolute;
@@ -68,4 +71,45 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+/********************************* CSS Ekstra ********************************/
+
+
+
+body > div > main > div > div.col-md-6.col-md-offset-2 {
+    display: none;
+}
+
+.taskReady {
+    background-color: #dfe4ea;
+}
+
+.taskInProgress {
+    background-color: mintcream;
+}
+
+.taskInQA {
+    background-color: #ffa502;
+}
+
+.taskDone {
+    /*    background-color: ghostwhite;
+*/
+    background-color: #7bed9f;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.link-button {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
 }
