@@ -55,7 +55,7 @@ namespace Roles.Controllers
                 Email = email
             };
 
-            await _userManager.CreateAsync(user, "Nickcolas1!");
+            await _userManager.CreateAsync(user, "PASSWORd!");
 
             return RedirectToAction("Index");
         }
