@@ -21,13 +21,13 @@ namespace Roles.Controllers
                 mMessage.Subject = email.Subject;
                 mMessage.Body = email.Body;
                 mMessage.IsBodyHtml = false;
-                mMessage.From = new MailAddress("era.camacho@gmail.com");
+                mMessage.From = new MailAddress("YOUR_EMAIL@gmail.com");
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
                 // smtp 
                 smtpClient.Port = 587;
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.EnableSsl = true;
-                smtpClient.Credentials = new NetworkCredential("era.camacho@gmail.com", "Nickcolas1");
+                smtpClient.Credentials = new NetworkCredential("YOUR_EMAIL@gmail.com", "PASSWORD");
                 
                 await smtpClient.SendMailAsync(mMessage);
                 ViewData["Message"] = "Message has been send Successfully";
