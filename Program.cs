@@ -35,7 +35,7 @@ namespace Roles
                         UserName = "admin@test.com",
                         Email = "admin@test.com"
                     };
-                    var result = userMgr.CreateAsync(adminUser, "Nickcolas1!").GetAwaiter().GetResult();
+                    var result = userMgr.CreateAsync(adminUser, "PASSWORD!").GetAwaiter().GetResult();
                     userMgr.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
                 }
             }
